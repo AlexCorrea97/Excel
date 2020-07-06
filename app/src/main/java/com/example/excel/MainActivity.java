@@ -20,7 +20,6 @@ import java.io.InputStream;
 import java.util.Iterator;
 
 
-
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -28,46 +27,43 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         createExcel();
-        //comentario_57 Alex Correa
+        //commit 1
     }
-    public void createExcel(){
-        try{
+
+    public void createExcel() {
+        try {
             String body[][];
-           // AssetManager am= getAssets();
-            InputStream is= getResources().openRawResource(R.raw.asset);
-            HSSFWorkbook wb= new HSSFWorkbook(is);
-            HSSFSheet sh= wb.getSheetAt(0);
-            Iterator<Row> filas= sh.iterator();
+            // AssetManager am= getAssets();
+            InputStream is = getResources().openRawResource(R.raw.asset);
+            HSSFWorkbook wb = new HSSFWorkbook(is);
+            HSSFSheet sh = wb.getSheetAt(0);
+            Iterator<Row> filas = sh.iterator();
             Iterator<Cell> celdas;
             Row fila;
             Cell celda;
-            while(filas.hasNext()){
-                int i=0;
-                fila= filas.next();
-                celdas=fila.cellIterator();
+            while (filas.hasNext()) {
+                int i = 0;
+                fila = filas.next();
+                celdas = fila.cellIterator();
 
-                while(celdas.hasNext()){
-                    celda=celdas.next();
+                while (celdas.hasNext()) {
+                    celda = celdas.next();
                     i++;
-                switch (celda.getCellType()){
-                    case Cell.CELL_TYPE_BLANK:
-                        System.out.println(String.valueOf(i));
-                        break;
-                    case Cell.CELL_TYPE_NUMERIC:
-                        System.out.println(String.valueOf(i)+celda.getNumericCellValue());
-                        break;
-                    case Cell.CELL_TYPE_STRING:
-                        System.out.println(String.valueOf(i)+celda.getStringCellValue());
-                        break;
-
-                }
-
+                    switch (celda.getCellType()) {
+                        case Cell.CELL_TYPE_BLANK:
+                            System.out.println(String.valueOf(i));
+                            break;
+                        case Cell.CELL_TYPE_NUMERIC:
+                            System.out.println(String.valueOf(i) + celda.getNumericCellValue());
+                            break;
+                        case Cell.CELL_TYPE_STRING:
+                            System.out.println(String.valueOf(i) + celda.getStringCellValue());
+                            break;
+                    }
                 }
             }
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.toString());
-
         }
 
     }
