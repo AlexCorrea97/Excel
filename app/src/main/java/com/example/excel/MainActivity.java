@@ -33,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void createExcel() {
-        try {
+        Toast.makeText(this, "linea36", Toast.LENGTH_SHORT).show();
+        try{
             String body[][];
             // AssetManager am= getAssets();
             InputStream is = getResources().openRawResource(R.raw.asset);
